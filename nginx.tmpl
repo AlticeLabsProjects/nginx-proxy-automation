@@ -348,7 +348,7 @@ server {
 		include fastcgi_params;
 		fastcgi_pass {{ trim $upstream_name }};
 		{{ else }}
-		proxy_pass {{ trim $proto }}://{{ trim $upstream_name }};
+		proxy_pass https://{{ trim $upstream_name }};
 		{{ end }}
 		{{ if (exists (printf "/etc/nginx/htpasswd/%s" $host)) }}
 		auth_basic	"Restricted {{ $host }}";
